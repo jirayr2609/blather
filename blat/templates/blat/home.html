@@ -1,1 +1,17 @@
-{{message}}
+{% load humanize %}
+{% if blat_list %}
+	<dl>
+	{% for blat in blat_list %}
+		<dt>{{blat.text}}</dt>
+		<dd>
+			<a href="{{blat.id}}">{{blat.created_on|naturaltime}}</a>
+			
+			{% if blat.via %}
+               <a href="{{blat.via}}">/via</a> 
+			{% endif %}
+			
+	{% endfor %}
+	</dl>
+{% else %}
+Hello
+{% endif %}
